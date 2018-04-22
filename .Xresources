@@ -1,0 +1,13 @@
+!---------------------
+!	Urxvt settings
+!---------------------
+URxvt.scrollBar:	false
+URxvt.font:		xft:Iosevka:size=18
+URxvt.cursorUnderline:	true
+
+
+!---------------------
+!	Color settings
+!---------------------
+
+#include "/home/rafael/.colors/dracula"
