@@ -1,0 +1,444 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
+black1 = ${xrdb:color0}
+black2 = ${xrdb:color8}
+red1 = ${xrdb:color1}
+red2 =  ${xrdb:color9}
+green1 = ${xrdb:color2}
+green2 = ${xrdb:color10}
+yellow1 = ${xrdb:color3}
+yellow2 = ${xrdb:color11}
+blue1 = ${xrdb:color4}
+blue2 = ${xrdb:color12}
+magenta1 = ${xrdb:color5}
+magenta2 = ${xrdb:color13}
+cyan1 = ${xrdb:color6}
+cyan2 = ${xrdb:color14}
+white1 = ${xrdb:color7}
+white2 = ${xrdb:color15}
+
+
+[bar/top]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 27
+;offset-x = 50
+;offset-y = 15
+radius = 0.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = ${colors.red1}
+
+;border-size = 4
+
+padding-left = 1
+padding-right = 1
+
+module-margin-left = 1
+module-margin-right = 2
+
+;font-0 = fixed:pixelsize=10;1
+;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+;font-2 = siji:pixelsize=10;1
+
+font-0 = Iosevka Medium:antialias=true:pixelsize=10;1
+font-1 = FontAwesome:pixelsize=9;1
+font-2 = Wuncon Siji:pixelsize:9;2
+
+modules-left = bspwm spotify mpd
+modules-center = 
+modules-right = xkeyboard wlan eth  memory cpu battery temperature date powermenu
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+;format-prefix-background = ${colors.blue1}
+;format-prefix-foreground = ${colors.black1}
+;format-prefix-padding = 1
+
+label-layout = %layout%
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+;label-indicator-background = ${colors.yellow1}
+;label-indicator-underline = ${colors.yellow1}
+
+[module/bspwm]
+type = internal/bspwm
+
+label-focused = %index%
+label-focused-background = ${colors.background}
+label-focused-underline= ${colors.green1}
+label-focused-padding = 2
+
+label-occupied = %index%
+label-occupied-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${colors.red1}
+label-urgent-padding = 2
+
+label-empty = 
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 2
+
+[module/mpd]
+type = internal/mpd
+format-online = " "
+format-offline = " "
+format-online-padding = 1
+format-offline-padding = 1
+
+format-online-prefix = 
+format-online-prefix-background = ${colors.background}
+format-online-prefix-foreground = ${colors.foreground}
+format-online-prefix-padding = 1
+
+format-offline-prefix = 
+format-offline-prefix-background = ${colors.background}
+format-offline-prefix-foreground = ${colors.foreground}
+format-offline-prefix-padding = 1
+
+;[module/mpd]
+;type = internal/mpd
+;format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
+
+;icon-prev = 
+;icon-stop = 
+;icon-play = 
+;icon-pause = 
+;icon-next = 
+
+;label-song-maxlen = 25
+;label-song-ellipsis = true
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+;format-prefix = " "
+;format-prefix-background = ${colors.blue1}
+;format-prefix-foreground = ${colors.black1}
+;format-prefix-padding = 1
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+;format-prefix = " "
+;format-prefix-background = ${colors.magenta1}
+;format-prefix-foreground = ${colors.black1}
+;format-prefix-padding = 1
+
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+;format-connected-underline = ${colors.green1}
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground}
+
+[module/eth]
+type = internal/network
+interface = enp0s31f6
+interval = 3.0
+
+;format-connected-underline = ${colors.green1}
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+;format-prefix = 
+;format-prefix-background = ${colors.blue1}
+;format-prefix-foreground = ${colors.black1}
+;format-prefix-padding = 1
+
+label = %date% %time%
+
+[module/battery]
+;$ ls -intern1 /sys/class/power_supply/
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 99
+
+;format-charging = <animation-charging> <label-charging>
+;format-charging-underline = ${colors.blue1} 
+
+;format-discharging = <ramp-capacity> <label-discharging>
+;format-discharging-underline = ${self.format-charging-underline}
+
+;format-full-prefix = " "
+;format-full-prefix-foreground = ${colors.foreground}
+;format-full-underline = ${self.format-charging-underline}
+
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
+;ramp-capacity-foreground = ${colors.foreground}
+
+;animation-charging-0 = 
+;animation-charging-1 = 
+;animation-charging-2 = 
+;animation-charging-foreground = ${colors.foreground}
+;animation-charging-framerate = 750
+
+# format-charging-background = #68686c
+# format-discharging-background = #68686c
+format-charging-padding = 2
+format-discharging-padding = 2
+format-full-padding = 2
+
+# format-full-background = #68686c
+
+; If an inotify event haven't been reported in this many
+; ; seconds, manually poll for new values.
+; ;
+; ; Needed as a fallback for systems that don't report events
+; ; on sysfs/procfs.
+; ;
+; ; Disable polling by setting the interval to 0.
+; ;
+; ; Default: 5
+poll-interval = 5
+;
+; ; see "man date" for details on how to format the time string
+; ; NOTE: if you want to use syntax tags here you need to use %%{...}
+; ; Default: %H:%M:%S
+time-format = %H:%M
+;
+; ; Available tags:
+; ;   <label-charging> (default)
+; ;   <bar-capacity>
+; ;   <ramp-capacity>
+; ;   <animation-charging>
+format-charging = <animation-charging> <label-charging>
+;
+; ; Available tags:
+; ;   <label-discharging> (default)
+; ;   <bar-capacity>
+; ;   <ramp-capacity>
+format-discharging = <ramp-capacity> <label-discharging>
+
+; ; Available tags:
+; ;   <label-full> (default)
+; ;   <bar-capacity>
+; ;   <ramp-capacity>
+; ;format-full = <ramp-capacity> <label-full>
+;
+; ; Available tokens:
+; ;   %percentage% (default)
+; ;   %time%
+; ;   %consumption% (shows current charge rate in watts)
+label-charging = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+label-full = 
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+; Only applies if <bar-capacity> is used
+bar-capacity-width = 10
+
+; Only applies if <animation-charging> is used
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+; ; Framerate in milliseconds
+ animation-charging-framerate = 750
+
+
+[module/temperature]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; ; Default: 1
+interval = 0.5
+;
+format-padding = 2 
+;
+; Thermal zone to use
+; To list all the zone types, run
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+;
+; Threshold temperature to display warning label
+; Default: 80
+;
+; Available tags:
+;   <label> (default)
+;   <ramp>
+ format = <label>
+; format-background = #747474
+
+; Available tags:
+;   <label-warn> (default)
+;   <ramp>
+format-warn = <label-warn>
+
+label =  %temperature%
+
+label-warn =  %temperature%
+label-warn-foreground = ${colors.green1}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.foreground}
+label-close =  cancel
+label-close-foreground = ${colors.foreground}
+label-separator = |
+label-separator-foreground = ${colors.foreground}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[module/spotify]
+type = custom/script
+exec = sh ~/.config/polybar/modules/spotify.sh
+exec-if = pgrep -x spotify
+interval = 1
+
+format-prefix = " "
+format-padding = 2
+;format-prefix-foreground = ${colors.purple}
+click-left = playerctl play-pause
+click-right = playerctl next
+label = %output:0:60:...%
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini
