@@ -9,7 +9,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'Valloric/YouCompleteMe'
 
 " let g:solarized_termcolors=256
 
