@@ -1,13 +1,46 @@
-!---------------------
-!	Urxvt settings
-!---------------------
-URxvt.scrollBar:	false
-URxvt.font:		xft:Iosevka:size=18
-URxvt.cursorUnderline:	true
+!Xft settings 
+Xft.dpi: 	140
+Xft.autohint: 	0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 	1
+Xft.antialias: 	1
+Xft.rgba: 	rgb
 
 
-!---------------------
-!	Color settings
-!---------------------
+!URxvt settings 
+URxvt.internalBorder:    10
+URxvt.externalBorder:    0
+!URxvt.lineSpace:        0
+!urxvt*shading:          30
+URxvt.depth:             32
+URxvt.saveLines:         10000
+URxvt*geometry:          96x30
+URxvt*visualBell:        false
 
-#include "/home/rafael/.colors/dracula"
+!! Keybindings
+URxvt.keysym.C-Up:       perl:font-size:increase
+URxvt.keysym.C-Down:     perl:font-size:decrease
+URxvt.keysym.C-S-Up:     perl:font-size:incglobal
+URxvt.keysym.C-S-Down:   perl:font-size:decglobal
+
+!! Scrollbar
+URxvt.scrollBar:		false
+
+!! Fonts
+URxvt.font:		xft:Inconsolata:size=14
+!URxvt.font:		xft:Serifa:size=14
+!URxvt.font:		xft:Terminus:size=14
+!URxvt.font:		xft:Hack:size=20
+!URxvt*font: 		xft:Source Code Pro Medium:size=16
+!URxvt.letterSpace:	-2
+
+!! CopyPaste
+URxvt.keysym.Shift-Control-C:	perl:clipboard:copy
+URxvt.keysym.Shift-Control-V:	perl:clipboard:paste
+
+URxvt.iso14755:		false
+URxvt.iso14755_52:	false
+
+!! Colors
+#include "/home/rafael/.colors/gruvbox"
