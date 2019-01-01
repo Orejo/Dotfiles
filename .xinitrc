@@ -60,9 +60,3 @@ xbindkeys
 
 # Launch bspwm
 exec bspwm
-
-# Set correct cursor icon
-xsetroot -cursor_name left_ptr
-
-# launch redshift
-# pgrep redshift &> /dev/null || redshift &> /dev/null &
