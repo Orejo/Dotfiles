@@ -1,2 +1,18 @@
-https://gwegner.de/feed/rss
-https://www.tagesanzeiger.ch/rss.html
+https://gwegner.de/feed/rss photography
+# http://theroadchoseme.com/feed traveling
+
+#news
+#https://www.tagesanzeiger.ch/rss.html news
+
+#scuba
+#https://www2.padi.com/blog/feed/ "~PADI Blog" scuba
+http://blog.gue.com/feed/ "~GUE Blog | In Depth" scuba
+https://www.frogkickers.com/rss scuba
+https://www.johnchatterton.com/feed/ scuba
+http://feeds.feedburner.com/DANNews "~DAN News" scuba
+http://feeds.feedburner.com/DANMedicalFAQs "~DAN Medical FAQs" scuba
+http://irenehomberger.com/feed/ scuba
+http://www.divegainesville.org/feed/ scuba
+
+# linux
+https://www.archlinux.org/feeds/news/ archlinux linux
