@@ -1,39 +1,33 @@
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf.vim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'dracula/vim'
 Plug 'vim-airline/vim-airline'
 Plug 'airblade/vim-gitgutter'
-Plug 'lifepillar/vim-solarized8'
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 
-" let g:solarized_termcolors=256
-
 call plug#end()
 
-set encoding=utf-8
+" Some basics:
+	set nocompatible
+	filetype plugin on
+	syntax on
+	set encoding=utf-8
+	set number relativenumber
 
-set termguicolors " Enable true color support.
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" Color and theme related things
+" set termguicolors     " enable true colors support
 
-" Theme config
-syntax on
-" set background=dark
-" let g:solarized_termcolors=256
-colorscheme dracula
-
-" UI config
-set relativenumber
+" Copy to clipboard
+set clipboard=unnamedplus
 
 " fzf mapping
 map ; :Files<CR>
 
-" NERDTree toggle
+" NERDTree toggle and enable hidden files
 map <C-o> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
 
 " vim gitgutter
 nmap ]c <Plug>GitGutterNextHunk
@@ -57,3 +51,6 @@ au BufNewFile,BufRead *.py
     \ set autoindent
     \ set fileformat=unix
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" airline powerline fonts
+" let g:airline_powerline_fonts = 1
